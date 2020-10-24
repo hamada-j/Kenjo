@@ -22,10 +22,6 @@ export class SearchComponent implements OnInit {
     this.resultSearch = null;
   }
 
-
-
-
-
   handleSearch(value) {
 
     for (let i = 0; i < this.arrArtists.length; i++) {
@@ -33,34 +29,34 @@ export class SearchComponent implements OnInit {
           return  this.resultSearch  = this.arrArtists[i] ;
       }
     }
-    /* this part of code is pending for implementation in the good way and validation mechanism  */
 
-    // if (value.textUser !== "" ) {
-    //   const mechanism = function search(nameKey, inArray){
-    //                     // tslint:disable-next-line: prefer-for-of
-    //                         for (let i = 0; i < inArray.length; i++) {
-    //                               if (inArray[i].name === nameKey) {
-    //                                     return inArray[i];
-    //                               }
-    //                           }
-    //                         };
-    //   let result = mechanism(value.textUser, this.arrArtists);
-    //   console.log('pass for good result',result)
-    //   if ( result = {} || result === undefined || result === null ) {
-    //       console.log('pass for bad 1 result');
-    //       return  this.resultSearch = 'Sorry, your input is incorrect';
-    //       } else {
-    //           const id = result.id;
-    //           return this.router.navigate([`detail/${id}`]);
-    //       }
-    // } else {
-    //   console.log('pass for bad 2 result');
-    //   this.resultSearch = 'Sorry, your input is incorrect';
-    // }
+    /*TODO: this part of code is pending for implementation in the good way and validation mechanism */
+
+    /*
+    if (value.textUser !== "" ) {
+      const mechanism = function search(nameKey, inArray){
+                        // tslint:disable-next-line: prefer-for-of
+                            for (let i = 0; i < inArray.length; i++) {
+                                  if (inArray[i].name === nameKey) {
+                                        return inArray[i];
+                                  }
+                              }
+                            };
+      let result = mechanism(value.textUser, this.arrArtists);
+      console.log('pass for good result',result)
+      if ( result = {} || result === undefined || result === null ) {
+          console.log('pass for bad 1 result');
+          return  this.resultSearch = 'Sorry, your input is incorrect';
+          } else {
+              const id = result.id;
+              return this.router.navigate([`detail/${id}`]);
+          }
+    } else {
+      console.log('pass for bad 2 result');
+      this.resultSearch = 'Sorry, your input is incorrect';
+    }
+    */
   }
-
-
-
 
   async ngOnInit() {
     this.id = this.route.snapshot.params['id'];

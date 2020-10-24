@@ -10,7 +10,7 @@
   >
     <th mat-header-cell *matHeaderCellDef>{{ column | uppercase }}</th>
 
-    <td mat-cell *matCellDef="let element" (click)="handleClick(element._id)">
+    <td mat-cell *matCellDef="let element" (click)="handleClick(element?._id)">
       {{ element[column] }}
     </td>
   </ng-container>
@@ -28,13 +28,35 @@
         style="display: flex; justify-content: space-between"
       >
         <div class="example-element-diagram">
-          <img [src]="element.photoUrl" />
+          <img [src]="element?.coverUrl" />
+          <p>{{ element.title }}</p>
         </div>
+
+        <div class="example-element-diagram">
+          <img [src]="artist?.photoUrl" />
+
+          <!-- <a
+            mat-list-item
+            routerLink="artist/{{ artistId }}"
+            routerLinkActive="list-item-active"
+            ><span class="">
+              <p>{{ artist?.name }}</p>
+            </span>
+            <mat-divider></mat-divider
+          ></a> -->
+          <a style="cursor: pointer" (click)="handleRedirect($event)"
+            ><span class="">
+              <p>{{ artist?.name }}</p>
+            </span>
+            <mat-divider></mat-divider
+          ></a>
+        </div>
+
         <div
           class="example-element-description"
-          *ngFor="let album of arrArtistAlbums"
+          *ngFor="let album of albumOfArtist"
         >
-          <p>{{ album.title }}</p>
+          <p>{{ album?.title }}</p>
           <span class="example-element-description-attribution">
             -- list of songs
           </span>
@@ -44,14 +66,14 @@
           <button
             mat-raised-button
             color="accent"
-            (click)="handleDetail(element._id)"
+            (click)="handleDetail(element?._id)"
           >
             <span class="material-icons"> read_more </span>
           </button>
           <button
             mat-raised-button
             color="accent"
-            (click)="handleEdit(element._id)"
+            (click)="handleEdit(element?._id)"
           >
             <span class="material-icons"> edit </span>
           </button>

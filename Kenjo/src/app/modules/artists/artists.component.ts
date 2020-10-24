@@ -50,10 +50,10 @@ expandedElement: ArtistElement | null;
 
   async handleDelete(artistId) {
    await this.Api.deleteArtist(artistId).then(async response => {
-      console.log(response);
+      console.log('%cResponse Server', 'color: green;', response);
       this.arrArtists = await this.Api.getAllArtists();
       this.router.navigate(["/"]);
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('%cError', 'color: red;', err));
 
   }
 
