@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Kenjo Chalenge';
+  title = 'Kenjo Chalenge by Hamada in 2020';
 }

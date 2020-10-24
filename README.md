@@ -91,3 +91,10 @@ TODO <----
         - Header, Sidebar and Footer
       - Redux (extra)
 - The App will use internal Rotting and fake login with Guard.
+
+# Two Ideas for Many Element
+
+One task of the challenge is to post many elements (artists o albums) in one time, all in array of object. Mast be valid element.
+
+- First: Use Redux to handel many input.
+- Second: Get All Element and manege them in the from and send to DB.

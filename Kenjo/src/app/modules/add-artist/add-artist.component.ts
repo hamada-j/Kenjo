@@ -71,17 +71,17 @@ export class AddArtistComponent implements OnInit {
     if (!this.isAddMode && this.formulario.valid) {
 
       this.Api.putArtist(this.id, this.formulario.value).then(res => {
-        console.log(res);
+        console.log('%cRES', 'color: green;', res);
         this.formulario.reset();
-      }).catch(err => console.log(err));
+      }).catch(err => console.log('%cError', 'color: red;',  err));
 
     } else {
 
       if (this.formulario.valid) {
       this.Api.postArtist(this.formulario.value).then(res => {
-        console.log(res);
+        console.log('%cRES', 'color: green;', res);
         this.formulario.reset();
-      }).catch(err => console.log(err));
+      }).catch(err => console.log('%cError', 'color: red;', err));
      }
     }
   }
@@ -135,9 +135,9 @@ export class AddArtistComponent implements OnInit {
     // Finally push to the MongoDB.
 
     this.Api.postArtistsMany(resultArray).then(response => {
-      console.log(response);
+      console.log('%cResponse Server', 'color: green;', response);
       // redirectTo all list
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('%cError', 'color: red;', err));
 
 
   }
@@ -153,9 +153,6 @@ export class AddArtistComponent implements OnInit {
         birthdate: this.artistToEdit.birthdate.substr(0, 10),
         deathDate: this.artistToEdit.deathDate.substr(0, 10)
         });
-
-    console.log(this.artistToEdit);
-
   }
 
 }
