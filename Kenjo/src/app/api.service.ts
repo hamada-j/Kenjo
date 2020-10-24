@@ -21,13 +21,37 @@ export class RestApiService {
   constructor(private httpClient: HttpClient, private router: Router) {
 
   }
+
   /*
   The code below will
   handel all methods
   for the Albums on API
   */
+
   getAllAlbums(): Promise<Album[]> {
     return this.httpClient.get<Album[]>(`${this.baseUrl}albums/all`).toPromise();
+  }
+
+  getAlbum(id): Promise<Album> {
+    return this.httpClient.get<Album>(`${this.baseUrl}artist/${id}`).toPromise();
+  }
+
+  postAlbum(formValues): Promise<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}album/`, formValues).toPromise();
+  }
+
+  postAlbumMany(arrayResult): Promise<Album> {
+    return this.httpClient.post<Album>(`${this.baseUrl}albums/`, arrayResult).toPromise();
+  }
+
+
+  putAlbum(id, body): Promise<Album> {
+    return this.httpClient.put<Album>(`${this.baseUrl}album/${id}`, body).toPromise();
+  }
+
+
+  deleteAlbum(albumId): Promise<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}album/${albumId}`).toPromise();
   }
 
 

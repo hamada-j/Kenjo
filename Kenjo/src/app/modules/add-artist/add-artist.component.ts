@@ -45,9 +45,7 @@ export class AddArtistComponent implements OnInit {
       birthdate: new FormControl('', [
         this.dateValidator
       ]),
-      deathDate: new FormControl('', [
-        this.dateValidator
-      ])
+      deathDate: new FormControl('', [])
     });
   }
   ///// Custom Validators /////
