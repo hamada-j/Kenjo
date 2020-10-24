@@ -18,7 +18,7 @@ Kenjo Challenge: dev challenge [Music Angular App] with Docker-Api.
 
 ## Design
 
-TODO <----
+TODO <---- (stom of ideas)
 
 ## Create Component
 
@@ -69,7 +69,7 @@ TODO <----
 
 ### Structure
 
-- The Idea is create a functional App with nice view and easy to use. The App will have two part (gates) in the first a presentation simple Landing Page with Materialize CSS [https://materializecss.com/about.html] I use sometimes and givin very nice views, so modern a cool. For this app I use two photos Artist in app Phone and Vinyl running.
+- The Idea is create a functional App with nice view and easy to use. The App in Angular(Typescript and SaSS) will have two part (gates) in the first a presentation simple Landing Page with Materialize CSS [https://materializecss.com/about.html] I use sometimes and givin very nice views, so modern a cool. For this app I use two photos Artist in app Phone and Vinyl running.
 
 - App will bea a Synthetic style with Flex-Layout and Angular Material [https://material.angular.io/]. I like use this because it gives so nice presentation in short time (if you know), there si some limitation but for this challenge it is perfect.
 
@@ -92,7 +92,7 @@ TODO <----
       - Redux (extra)
 - The App will use internal Rotting and fake login with Guard.
 
-# Two Ideas for Many Element
+## Two Ideas for Many Element
 
 One task of the challenge is to post many elements (artists o albums) in one time, all in array of object. Mast be valid element.
 
