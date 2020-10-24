@@ -1,0 +1,68 @@
+// Variables SsSS for Land
+
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #555;
+$main-light: lighten($main, 5%);
+$main-dark: darken($main, 5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+// *
+
+a {
+  text-decoration: none;
+  color: $main;
+  transition: 0.5s ease;
+  &:hover {
+    color: $main-dark;
+  }
+}
+
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+  background-color: $main;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// Responsive Media Queries
+
+@media (max-width: 836px) {
+  img {
+    display: block;
+    width: 110%;
+  }
+}
+@media (max-width: 684px) {
+  img {
+    display: block;
+    width: 124%;
+  }
+}
+@media (max-width: 605px) {
+  img {
+    display: block;
+    width: 150%;
+  }
+}
+
+@media (max-width: 515px) {
+  img {
+    display: block;
+    width: 200%;
+  }
+}

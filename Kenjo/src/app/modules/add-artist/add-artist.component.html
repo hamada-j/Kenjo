@@ -1,0 +1,294 @@
+<!-- This Section is for Add or Edit One Artist -->
+<mat-tab-group mat-align-tabs="end">
+  <mat-tab label="Add One">
+    <h1 *ngIf="isAddMode">Add Artist</h1>
+    <h1 *ngIf="!isAddMode">Edit Artist</h1>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <!-- Name -->
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          value="artistToEdit.name"
+        />
+        {{ formulario.controls.name.errors | json }}
+        <p
+          class="error"
+          *ngIf="
+            formulario.controls.name.errors?.required &&
+            formulario.controls.name.touched &&
+            formSended
+          "
+        >
+          Yo need add the name of the artist
+        </p>
+        <p
+          class="error"
+          *ngIf="
+            formulario.controls.name.errors?.maxlength &&
+            formulario.controls.name.dirty
+          "
+        >
+          Name: Minimum length 3 characters and max length 13.
+          {{ formulario.controls.name.errors.maxlength.requiredLength | json }}
+          and you are writing.
+          {{ formulario.controls.name.errors.maxlength.actualLength | json }}
+          caracteres
+        </p>
+      </div>
+      <!-- URL -->
+
+      <div class="form-group">
+        <label>Photo URL</label>
+        <input type="text" class="form-control" formControlName="photoUrl" />
+      </div>
+
+      <!-- Birth -->
+      <div class="form-group">
+        <label>Birthday</label>
+        <input type="date" class="form-control" formControlName="birthdate" />
+        <p
+          class="error"
+          *ngIf="
+            formulario.controls.birthdate.errors?.dateValidator &&
+            formulario.controls.birthdate.touched
+          "
+        >
+          Birthday should be between
+          {{ formulario.controls.birthdate.errors.dateValidator.min }} y
+          {{ formulario.controls.birthdate.errors.dateValidator.max }}, less
+          than deathDate.
+        </p>
+      </div>
+      <!-- Death -->
+      <div class="form-group">
+        <label>Death Date</label>
+        <input type="date" class="form-control" formControlName="deathDate" />
+        <p
+          class="error"
+          *ngIf="
+            formulario.controls.deathDate.errors?.dateValidator &&
+            formulario.controls.deathDate.touched
+          "
+        >
+          Birthday should be between
+          {{ formulario.controls.deathDate.errors.dateValidator.min }} y
+          {{ formulario.controls.deathDate.errors.dateValidator.max }} more than
+          Birthday.
+        </p>
+      </div>
+
+      <input type="submit" value="send" class="btn btn-block btn-success" />
+      <p class="error" *ngIf="formSended && !formulario.valid">
+        The Form is not correct, check again please!
+      </p>
+    </form>
+  </mat-tab>
+  <!-- ------------------------------------- -->
+  <!-- ------------------------------------- -->
+  <!-- This section is for Add 3 Artist in One time -->
+  <mat-tab label="Add More">
+    <div class="example-container">
+      <form
+        novalidate
+        #formMore="ngForm"
+        (ngSubmit)="onSubmitMore(formMore.value)"
+      >
+        <div class="group">
+          <h3>First Artist</h3>
+          <!-- Form 1/3 -->
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Artist Name"
+              required
+              type="text"
+              name="name1"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Photo URL"
+              required
+              type="text"
+              name="photoUrl1"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Birthdate"
+              required
+              type="text"
+              name="birthdate1"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="DeathDate"
+              required
+              type="text"
+              name="deathDate1"
+              ngModel
+            />
+          </mat-form-field>
+        </div>
+        <!-- Form 2/3 -->
+        <mat-divider></mat-divider>
+        <div class="group">
+          <h3>Second Artist</h3>
+
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Artist Name"
+              required
+              type="text"
+              name="name2"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Photo URL"
+              required
+              type="text"
+              name="photoUrl2"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Birthdate"
+              required
+              type="text"
+              name="birthdate2"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="DeathDate"
+              required
+              type="text"
+              name="deathDate2"
+              ngModel
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Form 3/3 -->
+        <mat-divider></mat-divider>
+        <div class="group">
+          <h3>Third Artist</h3>
+
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Artist Name"
+              required
+              type="text"
+              name="name3"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Photo URL"
+              required
+              type="text"
+              name="photoUrl3"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="Birthdate"
+              required
+              type="text"
+              name="birthdate3"
+              ngModel
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="fill"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <input
+              matInput
+              placeholder="DeathDate"
+              required
+              type="text"
+              name="deathDate3"
+              ngModel
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <input type="submit" value="send" class="btn btn-block btn-success" />
+          <p class="error" *ngIf="formSended && !formulario.valid">
+            The Form is not correct, check again please!
+          </p>
+        </div>
+      </form>
+    </div>
+    {{ formMore.value | json }}
+  </mat-tab>
+</mat-tab-group>
