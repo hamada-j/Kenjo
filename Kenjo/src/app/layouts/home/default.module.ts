@@ -40,6 +40,7 @@ import { ArtistsComponent } from 'src/app/modules/artists/artists.component';
 import { AddArtistComponent } from '../../modules/add-artist/add-artist.component';
 import { SearchComponent } from 'src/app/modules/search/search.component';
 import { AlbumComponent } from 'src/app/modules/album/album.component';
+import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component';
 
 
 
@@ -51,7 +52,8 @@ import { AlbumComponent } from 'src/app/modules/album/album.component';
     ArtistsComponent,
     AddArtistComponent,
     SearchComponent,
-    AlbumComponent
+    AlbumComponent,
+    AddAlbumComponent
   ],
   imports: [
     CommonModule,

@@ -24,6 +24,10 @@ export class AlbumComponent implements OnInit {
     this.hasMoreAlbums = false;
   }
 
+  handleRedirectArtist(e) {
+    this.router.navigate([`/detail/${this.artist['_id']}`]);
+  }
+
   handelSeeAlbum(idAlbum) {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
         this.router.navigate([`album/${idAlbum._id}`]);

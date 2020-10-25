@@ -3,8 +3,8 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+////////////// Internal Routing /////////////////////////
 import { AppRoutingModule } from "./app-routing.module";
-
 
 
 ////////////// APP //////////////////////////////////////
@@ -24,11 +24,8 @@ import {
 } from "@angular-redux/store";
 
 
-
-
-
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent],
+  declarations: [ AppComponent, LandingPageComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -12,6 +12,7 @@ import { ArtistsComponent } from './modules/artists/artists.component';
 import { AddArtistComponent } from './modules/add-artist/add-artist.component';
 import { SearchComponent } from './modules/search/search.component';
 import { AlbumComponent } from './modules/album/album.component';
+import { AddAlbumComponent } from './modules/add-album/add-album.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'land' },
@@ -37,6 +38,11 @@ const routes: Routes = [
         // canActivate: [LoginGuard]
       },
       {
+        path: "add-album",
+        component: AddAlbumComponent,
+        // canActivate: [LoginGuard]
+      },
+      {
         path: "add-artists",
         component: AddArtistComponent,
         // canActivate: [LoginGuard]
@@ -59,6 +65,11 @@ const routes: Routes = [
       {
         path: "album/:id",
         component: AlbumComponent,
+        // canActivate: [LoginGuard]
+      },
+      {
+        path: "update-album/:id",
+        component: AddAlbumComponent,
         // canActivate: [LoginGuard]
       },
       { path: '**', redirectTo: 'land' }

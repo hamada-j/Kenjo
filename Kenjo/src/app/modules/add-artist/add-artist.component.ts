@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+
 import { RestApiService } from 'src/app/api.service';
+
 import { Artist } from 'src/app/model/artist';
 
 @Component({
@@ -13,7 +15,7 @@ import { Artist } from 'src/app/model/artist';
 export class AddArtistComponent implements OnInit {
   id: string;
   isAddMode: boolean;
-  artistToEdit: Artist;
+  artistToEdit: null | Artist;
   //// Form init /////
   formulario: FormGroup;
   formSended: boolean;
@@ -26,6 +28,7 @@ export class AddArtistComponent implements OnInit {
 
   //// Constructor /////
   constructor(fb: FormBuilder, private Api: RestApiService, private route: ActivatedRoute) {
+    this.artistToEdit = null;
     this.options = fb.group({
     hideRequired: this.hideRequiredControl,
     floatLabel: this.floatLabelControl,
@@ -87,7 +90,7 @@ export class AddArtistComponent implements OnInit {
   }
 
 
-  ///// Method the multiple result from Form for push to database ////////////////////
+  ///// Method the multiple result from Form for push to database /////////////
 
   onSubmitMore(value) {
 
@@ -95,14 +98,14 @@ export class AddArtistComponent implements OnInit {
 
     console.log(value);
     const arr = [];
-    let result = Object.keys(value).map(function (key) {
+    const result = Object.keys(value).map( (key) => {
         return [String(key), value[key]];
     });
 
     // step 2 push the elements
 
-    for(let i = 0; i < result.length; i++) {
-        for(var z = 0; z < result[i].length; z++) {
+    for ( let i = 0; i < result.length; i++ ) {
+        for ( let z = 0; z < result[i].length; z++ ) {
            arr.push(result[i][z]);
         }
     }
@@ -110,11 +113,11 @@ export class AddArtistComponent implements OnInit {
     // step 3 remove the identity
 
     const  cleanArr = [];
-      for (let j = 0; j < arr.length; j++) {
+    for (let j = 0; j < arr.length; j++) {
         if (j === 0 || j % 2 === 0) {
          arr[j].slice(0, -1);
         }
-        cleanArr.push(arr[j])
+        cleanArr.push(arr[j]);
       }
 
     // step 4 prepare the object for the api
@@ -123,6 +126,7 @@ export class AddArtistComponent implements OnInit {
     const photoUrl = cleanArr[2];
     const birthdate = cleanArr[4];
     const deathDate = cleanArr[6];
+
 
     const a = cleanArr[1], b = cleanArr[3], c = cleanArr[5], d = cleanArr[7], e = cleanArr[9], f = cleanArr[11], g = cleanArr[13], h = cleanArr[15], i = cleanArr[17], j = cleanArr[19], k = cleanArr[21], l = cleanArr[23];
 
@@ -139,20 +143,22 @@ export class AddArtistComponent implements OnInit {
       // redirectTo all list
     }).catch(err => console.log('%cError', 'color: red;', err));
 
-
   }
 
   async ngOnInit() {
 
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    this.artistToEdit = await this.Api.getArtist(this.id);
-    this.formulario.setValue({
+
+    // Debug with Dev Tools to get this approach ;)
+    if (!this.isAddMode) {
+      this.artistToEdit = await this.Api.getArtist(this.id);
+      this.formulario.setValue({
         name: this.artistToEdit.name,
         photoUrl: this.artistToEdit.photoUrl,
         birthdate: this.artistToEdit.birthdate.substr(0, 10),
         deathDate: this.artistToEdit.deathDate.substr(0, 10)
         });
+    }
   }
-
 }

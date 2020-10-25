@@ -33,7 +33,7 @@ export class RestApiService {
   }
 
   getAlbum(id): Promise<Album> {
-    return this.httpClient.get<Album>(`${this.baseUrl}artist/${id}`).toPromise();
+    return this.httpClient.get<Album>(`${this.baseUrl}album/${id}`).toPromise();
   }
 
   postAlbum(formValues): Promise<any> {

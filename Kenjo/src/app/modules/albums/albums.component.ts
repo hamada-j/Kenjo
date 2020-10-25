@@ -1,14 +1,12 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+
 import { RestApiService } from "src/app/api.service";
-import { MatTableDataSource } from "@angular/material/table";
+
+// Models
 import { Artist } from 'src/app/model/artist';
 import { Album } from 'src/app/model/album';
-import { Router } from '@angular/router';
-// Models
-
-
-
 
 @Component({
   selector: "app-albums",
@@ -59,11 +57,11 @@ export class AlbumsComponent implements OnInit {
   }
 
   handleRedirect(e){
-    this.router.navigate([`/detail/${this.artist['_id']}`])
+    this.router.navigate([`/detail/${this.artist['_id']}`]);
   }
 
-  handleEdit(artistId) {
-    this.router.navigate([`/edit-album/${artistId}`]);
+  handleEdit(albumId) {
+    this.router.navigate([`/update-album/${albumId}`]);
   }
   handleDetail(albumId) {
     this.router.navigate([`album/${albumId}`]);
