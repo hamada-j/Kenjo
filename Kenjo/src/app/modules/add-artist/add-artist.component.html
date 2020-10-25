@@ -13,7 +13,9 @@
           formControlName="name"
           value="artistToEdit.name"
         />
-        {{ formulario.controls.name.errors | json }}
+        <!-- Only for Dev Mode -->
+        <p>Result: {{ formulario.controls.name.errors | json }}</p>
+
         <p
           class="error"
           *ngIf="
@@ -289,6 +291,7 @@
         </div>
       </form>
     </div>
-    {{ formMore.value | json }}
+    <!-- Only for Dev Mode -->
+    <p>Result: {{ formMore.value | json }}</p>
   </mat-tab>
 </mat-tab-group>

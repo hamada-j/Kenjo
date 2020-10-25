@@ -56,7 +56,11 @@
           class="example-element-description"
           *ngFor="let album of albumOfArtist"
         >
-          <p>{{ album?.title }}</p>
+          <p>
+            <a style="cursor: pointer" (click)="handleRedirectToAlbum(album)">{{
+              album?.title
+            }}</a>
+          </p>
           <span class="example-element-description-attribution">
             -- list of songs
           </span>

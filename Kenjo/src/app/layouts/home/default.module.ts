@@ -39,6 +39,7 @@ import { StoreService } from "src/app/modules/store.service";
 import { ArtistsComponent } from 'src/app/modules/artists/artists.component';
 import { AddArtistComponent } from '../../modules/add-artist/add-artist.component';
 import { SearchComponent } from 'src/app/modules/search/search.component';
+import { AlbumComponent } from 'src/app/modules/album/album.component';
 
 
 
@@ -49,7 +50,8 @@ import { SearchComponent } from 'src/app/modules/search/search.component';
     AlbumsComponent,
     ArtistsComponent,
     AddArtistComponent,
-    SearchComponent
+    SearchComponent,
+    AlbumComponent
   ],
   imports: [
     CommonModule,

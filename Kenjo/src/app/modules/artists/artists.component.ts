@@ -40,6 +40,9 @@ expandedElement: ArtistElement | null;
   async handleClick(artistId) {
     this.arrArtistAlbums = this.arrAlbums.filter(albumId => albumId.artistId === artistId);
   }
+  handelSeeAlbum(album) {
+    this.router.navigate([`album/${album._id}`]);
+  }
 
   handleEdit(artistId) {
     this.router.navigate([`/edit/${artistId}`]);
@@ -52,9 +55,10 @@ expandedElement: ArtistElement | null;
    await this.Api.deleteArtist(artistId).then(async response => {
       console.log('%cResponse Server', 'color: green;', response);
       this.arrArtists = await this.Api.getAllArtists();
-      this.router.navigate(["/"]);
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([`/artists/`]);
+    });
     }).catch(err => console.log('%cError', 'color: red;', err));
-
   }
 
 

@@ -4,16 +4,16 @@
   border: 1px solid #26a69a;
   padding: 8px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
-
-//// CSS from Material
 
 .example-card {
   max-width: 100%;
+  border-radius: 4px;
 }
 
 .example-header-image {
-  background-image: url("../../../assets/logo/logo.png");
+  // background-image: url("../../../assets/logo/logo.png");
   background-size: cover;
 }
 
@@ -25,4 +25,20 @@
 
 .example-full-width {
   width: 100%;
+}
+
+span {
+  color: black;
+}
+
+.Albums {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10% 10% 10% 10%;
+}
+.Album {
+  width: 25%;
+  height: 25%;
+  text-align: center;
 }

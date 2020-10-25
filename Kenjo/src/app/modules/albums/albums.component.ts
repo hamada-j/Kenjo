@@ -49,7 +49,8 @@ export class AlbumsComponent implements OnInit {
     this.album = arrAl[0];
 
     // get the Albums of the Artist
-    this.albumOfArtist = await this.arrAlbums.filter(album => album.artistId === this.album.artistId);
+    const arr = await this.arrAlbums.filter(album => album.artistId === this.album.artistId);
+    this.albumOfArtist = arr.filter(( obj ) => obj['_id'] !== this.album['_id']);
 
     // get the Artist
     const arrAr = await this.arrArtists.filter(artistId => artistId['_id'] === this.album['artistId']);
@@ -64,17 +65,21 @@ export class AlbumsComponent implements OnInit {
   handleEdit(artistId) {
     this.router.navigate([`/edit-album/${artistId}`]);
   }
-  handleDetail(artistId) {
-    this.router.navigate([`detail-album/${artistId}`]);
+  handleDetail(albumId) {
+    this.router.navigate([`album/${albumId}`]);
+  }
+  handleRedirectToAlbum(album){
+    this.router.navigate([`album/${album._id}`]);
   }
 
   async handleDelete(albumId) {
    await this.Api.deleteAlbum(albumId).then(async response => {
       console.log('%cResponse Server', 'color: green;', response);
       this.arrAlbums = await this.Api.getAllAlbums();
-      this.router.navigate(["/"]);
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([`/albums/`]);
+    });
     }).catch(err => console.log('%cError', 'color: red;', err));
-
   }
 
 

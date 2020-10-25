@@ -39,7 +39,11 @@
           class="example-element-description"
           *ngFor="let album of arrArtistAlbums"
         >
-          <p>{{ album.title }}</p>
+          <p>
+            <a style="cursor: pointer" (click)="handelSeeAlbum(album)">{{
+              album?.title
+            }}</a>
+          </p>
           <span class="example-element-description-attribution">
             -- list of songs
           </span>
