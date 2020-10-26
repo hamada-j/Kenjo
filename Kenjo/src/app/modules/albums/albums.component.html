@@ -28,7 +28,7 @@
         style="display: flex; justify-content: space-between"
       >
         <div class="example-element-diagram">
-          <img [src]="element?.coverUrl" />
+          <img [src]="element?.coverUrl | errorImage" />
           <p>{{ element.title }}</p>
         </div>
 

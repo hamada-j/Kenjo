@@ -9,7 +9,11 @@
       >
       <mat-card-subtitle>{{ album?.title }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="album?.coverUrl" alt="Photo of album?.title" />
+    <img
+      mat-card-image
+      [src]="album?.coverUrl | errorImage"
+      alt="Photo of album?.title"
+    />
     <mat-card-content>
       <div>
         <h4 *ngIf="hasMoreAlbums; else otherContent">

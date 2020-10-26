@@ -9,10 +9,9 @@ export class LoginGuard implements CanActivate {
   constructor(private router: Router) {}
   canActivate() {
     const date1 = moment();
-    const date2 = localStorage.getItem("fakeLogin");
+    const date2 = localStorage.getItem('secretWord_Welcome_hashed_Or_Token');
     const difference = date1.diff(date2, "minutes");
-    console.log(date1,date2,difference);
-    if ( difference <= 40) {
+    if ( difference <= 20) {
       return true;
     } else {
       this.router.navigate(["/land"]);

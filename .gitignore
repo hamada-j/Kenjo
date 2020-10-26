@@ -1,5 +1,6 @@
 
-Backend/
+/Api
+/data
 # Logs
 logs
 *.log

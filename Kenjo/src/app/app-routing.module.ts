@@ -20,57 +20,57 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent,
-     // canActivate: [LoginGuard],
+     canActivate: [LoginGuard],
     children: [
       {
         path: "",
         component: StoreComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "albums",
         component: AlbumsComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "artists",
         component: ArtistsComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "add-album",
         component: AddAlbumComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "add-artists",
         component: AddArtistComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "edit/:id",
         component: AddArtistComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "search",
         component: SearchComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "detail/:id",
         component: SearchComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "album/:id",
         component: AlbumComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       {
         path: "update-album/:id",
         component: AddAlbumComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
       },
       { path: '**', redirectTo: 'land' }
     ]

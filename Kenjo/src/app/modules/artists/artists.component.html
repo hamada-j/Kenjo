@@ -32,7 +32,7 @@
         style="display: flex; justify-content: space-between"
       >
         <div class="example-element-diagram">
-          <img [src]="element.photoUrl" />
+          <img [src]="element.photoUrl | errorImage" />
           <p>ID: {{ element["_id"] }}</p>
         </div>
         <div

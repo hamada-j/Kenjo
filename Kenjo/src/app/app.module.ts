@@ -24,8 +24,9 @@ import {
 } from "@angular-redux/store";
 
 
+
 @NgModule({
-  declarations: [ AppComponent, LandingPageComponent ],
+  declarations: [ AppComponent, LandingPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

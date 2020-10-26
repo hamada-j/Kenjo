@@ -92,9 +92,21 @@ TODO <---- (stom of ideas)
       - Redux (extra)
 - The App will use internal Rotting and fake login with Guard.
 
+## Routing
+
+The app use Angular routing with routes fix and dynamic for link the different component. To render in a component a element base on the info from the MongoDB the ID is pass to the URL for this approach.
+
+## Guard or LoginGuard
+
+Additionally I add the guard for the internal routing ( a simulation of login ) for 20 minutes using a very nice external library call MomentJS to compare the time with register one in LocalStorage.
+
+## Pipe
+
+I create Pipe to check wherever the URL is images url in the app ( I know tha is possible use validation but to use different ways in the challenge ).
+
 ## Two Ideas for Many Element
 
 One task of the challenge is to post many elements (artists o albums) in one time, all in array of object. Mast be valid element.
 
-- First: Use Redux to handel many input.
+- First: Use Redux to handel many input.(I did not have time to work in it)
 - Second: Get All Element and manege them in the from and send to DB.

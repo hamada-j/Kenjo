@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   handleClick() {
+    localStorage.removeItem('secretWord_Welcome_hashed_Or_Token');
     this.router.navigate(["/land"]);
-   // localStorage.removeItem(this.secretWord);
   }
 
 

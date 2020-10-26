@@ -42,6 +42,9 @@ import { SearchComponent } from 'src/app/modules/search/search.component';
 import { AlbumComponent } from 'src/app/modules/album/album.component';
 import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component';
 
+///// PiPe's /////
+import { PipesModule } from 'src/app/pipe/pipe.module';
+
 
 
 @NgModule({
@@ -53,7 +56,7 @@ import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component
     AddArtistComponent,
     SearchComponent,
     AlbumComponent,
-    AddAlbumComponent
+    AddAlbumComponent,
   ],
   imports: [
     CommonModule,
@@ -86,7 +89,7 @@ import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-
+    PipesModule
   ],
   providers: [StoreService]
 })
