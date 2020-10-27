@@ -43,7 +43,7 @@ import { AlbumComponent } from 'src/app/modules/album/album.component';
 import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component';
 
 ///// PiPe's /////
-import { PipesModule } from 'src/app/pipe/pipe.module';
+import { PipesModule } from 'src/app/pipe/pipeimage.module';
 
 
 

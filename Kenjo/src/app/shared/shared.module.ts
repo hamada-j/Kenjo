@@ -23,7 +23,6 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 ///// Highcharts Chart /////
-import { HighchartsChartModule } from "highcharts-angular";
 ///// Component /////
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
@@ -34,8 +33,6 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { environment } from "src/environments/environment";
 ///// FireBase and Google Map /////
 import { AgmCoreModule } from "@agm/core";
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
 
 
 @NgModule({
@@ -66,7 +63,6 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
     MatSnackBarModule,
     MatProgressSpinnerModule,
     RouterModule,
-    HighchartsChartModule,
     FormsModule,
     ReactiveFormsModule
   ],

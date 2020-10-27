@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
-
+const SECRET_WORD = environment.secretWord;
 @Component({
   selector: "app-landingpage",
   templateUrl: "./landingpage.component.html",
@@ -10,21 +10,13 @@ import * as moment from 'moment';
 })
 
 export class LandingPageComponent implements OnInit {
-  secretWord: string;
   constructor(private router: Router) {
-    this.secretWord = 'fakeLogin';
   }
 
   handleClick() {
-    localStorage.setItem('secretWord_Welcome_hashed_Or_Token', new Date().toString());
+    localStorage.setItem(SECRET_WORD, new Date().toString());
     this.router.navigate(["/"]);
   }
 
   ngOnInit(): void {}
-
-  // tslint:disable-next-line: use-lifecycle-interface
-  // ngAfterViewInit() {
-  //   const instanceC = new M.Parallax.init(this.c.nativeElement);
-  // }
-
 }
