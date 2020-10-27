@@ -23,15 +23,29 @@ export class SearchComponent implements OnInit {
   }
 
   handleSearch(value) {
-
     for (let i = 0; i < this.arrArtists.length; i++) {
       if (this.arrArtists[i].name === value.textUser) {
-          return  this.resultSearch  = this.arrArtists[i] ;
+          return  this.resultSearch = this.arrArtists[i] ;
       }
     }
+  }
 
-    /*TODO: this part of code is pending for implementation in the good way and validation mechanism */
+  async ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.isSearchMode = !this.id;
+    if (!this.isSearchMode) {
+      this.artistDetails = await this.Api.getArtist(this.id);
+      this.arrAlbums = await this.Api.getAllAlbums();
 
+      this.arrArtistAlbums = this.arrAlbums.filter(albumId => albumId.artistId === this.id);
+    } else if (this.isSearchMode) {
+      this.arrArtists = await this.Api.getAllArtists();
+    }
+  }
+}
+
+
+   /*TODO: this part of code is pending for implementation in the good way and validation mechanism */
     /*
     if (value.textUser !== "" ) {
       const mechanism = function search(nameKey, inArray){
@@ -56,19 +70,3 @@ export class SearchComponent implements OnInit {
       this.resultSearch = 'Sorry, your input is incorrect';
     }
     */
-  }
-
-  async ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.isSearchMode = !this.id;
-    if (!this.isSearchMode) {
-      this.artistDetails = await this.Api.getArtist(this.id);
-      this.arrAlbums = await this.Api.getAllAlbums();
-
-      this.arrArtistAlbums = this.arrAlbums.filter(albumId => albumId.artistId === this.id);
-    } else if (this.isSearchMode) {
-      this.arrArtists = await this.Api.getAllArtists();
-    }
-  }
-
-}

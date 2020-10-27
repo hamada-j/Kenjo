@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Router } from '@angular/router';
 
+import { responseServer, responseError, greenColor, redColor } from '../../globals';
 import { RestApiService } from 'src/app/api.service';
+
 import { Artist } from '../../model/artist';
 import { Album } from 'src/app/model/album';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-artists',
@@ -29,13 +32,12 @@ arrAlbums: Album[];
 arrArtistAlbums: Album[];
 columnsToDisplay = ['name', 'birthdate', 'deathDate'];
 expandedElement: ArtistElement | null;
+
   constructor(private Api: RestApiService, private router: Router) {
     this.arrArtists  = [];
     this.arrAlbums = [];
     this.arrArtistAlbums = [];
   }
-
-
 
   async handleClick(artistId) {
     this.arrArtistAlbums = this.arrAlbums.filter(albumId => albumId.artistId === artistId);
@@ -53,14 +55,13 @@ expandedElement: ArtistElement | null;
 
   async handleDelete(artistId) {
    await this.Api.deleteArtist(artistId).then(async response => {
-      console.log('%cResponse Server', 'color: green;', response);
+      console.log(responseServer, greenColor, response);
       this.arrArtists = await this.Api.getAllArtists();
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
         this.router.navigate([`/artists/`]);
     });
-    }).catch(err => console.log('%cError', 'color: red;', err));
+    }).catch(err => console.log(responseError, redColor, err));
   }
-
 
   async ngOnInit() {
     this.arrArtists = await this.Api.getAllArtists();

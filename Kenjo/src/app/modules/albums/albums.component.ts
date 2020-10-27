@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
+import { configID, artistID, responseServer, responseError, greenColor, redColor } from '../../globals';
 import { RestApiService } from "src/app/api.service";
 
-// Models
 import { Artist } from 'src/app/model/artist';
 import { Album } from 'src/app/model/album';
 
@@ -43,21 +43,21 @@ export class AlbumsComponent implements OnInit {
 
   async handleClick(Id) {
     // get the Album
-    const arrAl = await this.arrAlbums.filter(album => album['_id'] === Id);
+    const arrAl = await this.arrAlbums.filter(album => album[configID] === Id);
     this.album = arrAl[0];
 
     // get the Albums of the Artist
     const arr = await this.arrAlbums.filter(album => album.artistId === this.album.artistId);
-    this.albumOfArtist = arr.filter(( obj ) => obj['_id'] !== this.album['_id']);
+    this.albumOfArtist = arr.filter(( obj ) => obj[configID] !== this.album[configID]);
 
     // get the Artist
-    const arrAr = await this.arrArtists.filter(artistId => artistId['_id'] === this.album['artistId']);
+    const arrAr = await this.arrArtists.filter(artistId => artistId[configID] === this.album[artistID]);
     this.artist = arrAr[0];
-    this.artistId = this.album['artistId'];
+    this.artistId = this.album[artistID];
   }
 
-  handleRedirect(e){
-    this.router.navigate([`/detail/${this.artist['_id']}`]);
+  handleRedirect(e) {
+    this.router.navigate([`/detail/${this.artist[configID]}`]);
   }
 
   handleEdit(albumId) {
@@ -66,18 +66,18 @@ export class AlbumsComponent implements OnInit {
   handleDetail(albumId) {
     this.router.navigate([`album/${albumId}`]);
   }
-  handleRedirectToAlbum(album){
+  handleRedirectToAlbum(album) {
     this.router.navigate([`album/${album._id}`]);
   }
 
   async handleDelete(albumId) {
    await this.Api.deleteAlbum(albumId).then(async response => {
-      console.log('%cResponse Server', 'color: green;', response);
+      console.log(responseServer, greenColor, response);
       this.arrAlbums = await this.Api.getAllAlbums();
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
         this.router.navigate([`/albums/`]);
     });
-    }).catch(err => console.log('%cError', 'color: red;', err));
+    }).catch(err => console.log(responseError, redColor, err));
   }
 
 

@@ -1,51 +1,54 @@
 <!-- Condition in Search -->
-<h1 *ngIf="isSearchMode; else otherContent">Search</h1>
-<div class="wrap">
-  <!-- Form Search -->
-  <form novalidate #search="ngForm" (ngSubmit)="handleSearch(search.value)">
-    <div class="search">
-      <input
-        type="text"
-        class="searchTerm"
-        placeholder="What are you looking for?"
-        name="textUser"
-        ngModel
-      />
-      <button mat-button color="primary" type="submit" class="searchButton">
-        <span class="material-icons"> youtube_searched_for </span>
-      </button>
+<div *ngIf="isSearchMode; else otherContent">
+  <h1>Search</h1>
+  <div class="wrap">
+    <!-- Form Search -->
+    <form novalidate #search="ngForm" (ngSubmit)="handleSearch(search.value)">
+      <div class="search">
+        <input
+          type="text"
+          class="searchTerm"
+          placeholder="What are you looking for?"
+          name="textUser"
+          ngModel
+        />
+        <button mat-button color="primary" type="submit" class="searchButton">
+          <span class="material-icons"> youtube_searched_for </span>
+        </button>
+      </div>
+    </form>
+    <mat-divider></mat-divider>
+    <!-- Search Result -->
+    <div class="center" *ngIf="resultSearch">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ resultSearch?.name }}</mat-card-title>
+          <mat-card-subtitle>Artist</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [src]="resultSearch?.photoUrl"
+          alt="Photo of resultSearch?.name"
+        />
+        <mat-card-content>
+          <div>
+            <mat-selection-list #shoes>
+              <mat-list-option *ngFor="let album of arrArtistAlbums">
+                {{ album.title }}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
-  </form>
-  <mat-divider></mat-divider>
-  <!-- Search Result -->
-  <div class="center" *ngIf="resultSearch">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ resultSearch?.name }}</mat-card-title>
-        <mat-card-subtitle>Artist</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        [src]="resultSearch?.photoUrl"
-        alt="Photo of resultSearch?.name"
-      />
-      <mat-card-content>
-        <div>
-          <mat-selection-list #shoes>
-            <mat-list-option *ngFor="let album of arrArtistAlbums">
-              {{ album.title }}
-            </mat-list-option>
-          </mat-selection-list>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
   </div>
 </div>
+
 <!-- Condition in NO Search -->
 <ng-template #otherContent>
   <div class="center" *ngIf="!isSearchMode">

@@ -45,8 +45,6 @@ import { AddAlbumComponent } from 'src/app/modules/add-album/add-album.component
 ///// PiPe's /////
 import { PipesModule } from 'src/app/pipe/pipeimage.module';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,

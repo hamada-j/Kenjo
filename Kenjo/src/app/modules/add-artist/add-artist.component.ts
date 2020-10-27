@@ -1,8 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
+import { minDateConfig, maxDateConfig, responseServer, responseError, greenColor, redColor } from '../../globals';
 import { RestApiService } from 'src/app/api.service';
 
 import { Artist } from 'src/app/model/artist';
@@ -16,24 +18,19 @@ export class AddArtistComponent implements OnInit {
   id: string;
   isAddMode: boolean;
   artistToEdit: null | Artist;
-  //// Form init /////
   formulario: FormGroup;
   formSended: boolean;
-
-  //// Angular Material /////
 
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  //// Constructor /////
   constructor(fb: FormBuilder, private Api: RestApiService, private route: ActivatedRoute) {
     this.artistToEdit = null;
     this.options = fb.group({
     hideRequired: this.hideRequiredControl,
     floatLabel: this.floatLabelControl,
     });
-    ////// Form ////////////
 
     this.formSended = false;
     this.formulario = new FormGroup({
@@ -48,43 +45,52 @@ export class AddArtistComponent implements OnInit {
       birthdate: new FormControl('', [
         this.dateValidator
       ]),
-      deathDate: new FormControl('', [])
+      deathDate: new FormControl('', [
+        this.dateValidator
+      ])
     });
   }
-  ///// Custom Validators /////
+
   dateValidator(control) {
     const dateValue = control.value;
-
-    const maxValue = "2020-01-01";
-    const minValue = "1909-01-01";
-    const a = moment(minValue).isBefore(dateValue, 'year');
-    const b = moment(maxValue).isAfter(dateValue, 'year');
-
+    const a = moment(minDateConfig).isBefore(dateValue, 'year');
+    const b = moment(maxDateConfig).isAfter(dateValue, 'year');
     if (a && b) {
-      // Valid date OK
       return null;
     } else {
-      return { dateValidator: { max: maxValue, min: minValue } };
+      return { dateValidator: { max: maxDateConfig, min: minDateConfig } };
     }
   }
 
-/////// Submit the Form to Database ///////
+  deathValidator(control) {
+    const value = this.dateValidator(control)
+    return value || null;
+    // const dateValue = control.value;
+    // const a = moment(minDateConfig).isBefore(dateValue, 'year');
+    // const b = moment(maxDateConfig).isAfter(dateValue, 'year');
+
+    // if ( null || (a && b)) {
+    //   return null;
+    // } else {
+    //   return { dateValidator: { max: maxDateConfig, min: minDateConfig } };
+    // }
+  }
+
   onSubmit() {
 
     if (!this.isAddMode && this.formulario.valid) {
-
       this.Api.putArtist(this.id, this.formulario.value).then(res => {
-        console.log('%cRES', 'color: green;', res);
+        console.log(responseServer, greenColor, res);
         this.formulario.reset();
-      }).catch(err => console.log('%cError', 'color: red;',  err));
+      }).catch(err => console.log(responseError, redColor ,  err));
 
     } else {
 
       if (this.formulario.valid) {
       this.Api.postArtist(this.formulario.value).then(res => {
-        console.log('%cRES', 'color: green;', res);
+        console.log(responseServer, greenColor, res);
         this.formulario.reset();
-      }).catch(err => console.log('%cError', 'color: red;', err));
+      }).catch(err => console.log(responseError, redColor , err));
      }
     }
   }
@@ -122,12 +128,6 @@ export class AddArtistComponent implements OnInit {
 
     // step 4 prepare the object for the api
 
-    const name = cleanArr[0];
-    const photoUrl = cleanArr[2];
-    const birthdate = cleanArr[4];
-    const deathDate = cleanArr[6];
-
-
     const a = cleanArr[1], b = cleanArr[3], c = cleanArr[5], d = cleanArr[7], e = cleanArr[9], f = cleanArr[11], g = cleanArr[13], h = cleanArr[15], i = cleanArr[17], j = cleanArr[19], k = cleanArr[21], l = cleanArr[23];
 
     const artist1 = {name: a, photoUrl: b, birthdate: c, deathDate: d };
@@ -137,11 +137,10 @@ export class AddArtistComponent implements OnInit {
     const resultArray = [ artist1, artist2, artist3 ];
 
     // Finally push to the MongoDB.
-
     this.Api.postArtistsMany(resultArray).then(response => {
-      console.log('%cResponse Server', 'color: green;', response);
+      console.log(responseServer, greenColor, response);
       // redirectTo all list
-    }).catch(err => console.log('%cError', 'color: red;', err));
+    }).catch(err => console.log(responseError, redColor , err));
 
   }
 
@@ -157,7 +156,7 @@ export class AddArtistComponent implements OnInit {
         name: this.artistToEdit.name,
         photoUrl: this.artistToEdit.photoUrl,
         birthdate: this.artistToEdit.birthdate.substr(0, 10),
-        deathDate: this.artistToEdit.deathDate.substr(0, 10)
+        deathDate: this.artistToEdit.deathDate ? this.artistToEdit.deathDate.substr(0, 10) : null,
         });
     }
   }
