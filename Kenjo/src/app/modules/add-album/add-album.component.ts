@@ -20,6 +20,8 @@ export class AddAlbumComponent implements OnInit {
   albums: Album[];
   arr: string[];
   selectedValue: string;
+  textErrorOne: string;
+  textErrorMany: string;
 
   albumForm: FormGroup;
   formSended: boolean;
@@ -29,8 +31,11 @@ export class AddAlbumComponent implements OnInit {
   floatLabelControl = new FormControl('auto');
 
   constructor(fb: FormBuilder, private Api: RestApiService, private route: ActivatedRoute) {
+
     this.arr = [];
     this.albumToEdit = null;
+    this.textErrorOne = null;
+    this. textErrorMany = null;
     this.options = fb.group({
     hideRequired: this.hideRequiredControl,
     floatLabel: this.floatLabelControl,
@@ -84,7 +89,10 @@ export class AddAlbumComponent implements OnInit {
         await this.Api.putAlbum(this.id, resultForm).then(res => {
         console.log(responseServer, greenColor, res);
         this.albumForm.reset();
-      }).catch(err => console.log(responseError, redColor,  err));
+      }).catch(err => {
+        console.log(responseError, redColor ,  err);
+        this.textErrorOne = err.error.error;
+      });
 
       } else {
 
@@ -92,8 +100,11 @@ export class AddAlbumComponent implements OnInit {
           await this.Api.postAlbum(resultForm).then(res => {
           console.log(responseServer, greenColor, res);
           this.albumForm.reset();
-        }).catch(err => console.log(responseError, redColor, err));
-      }
+        }).catch(err => {
+            console.log(responseError, redColor ,  err);
+            this.textErrorOne = err.error.error;
+          });
+        }
       }
   }
 
@@ -134,7 +145,10 @@ export class AddAlbumComponent implements OnInit {
     this.Api.postAlbumMany(resultArray).then(response => {
       console.log(responseServer, greenColor, response);
       // redirectTo all list
-    }).catch(err => console.log(responseError, redColor, err));
+    }).catch(err => {
+      console.log(responseError, redColor ,  err);
+      this.textErrorMany = err.error.error;
+    });
 
   }
 

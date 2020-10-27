@@ -65,9 +65,24 @@
       />
       <mat-card-content>
         <div>
+          <p>
+            {{ artistDetails?.name }} was born in
+            {{ artistDetails?.birthdate | date }}.
+          </p>
+          <p *ngIf="artistDetails?.deathDate">
+            and Death in {{ artistDetails?.deathDate | date }}
+          </p>
+          <p *ngIf="arrArtistAlbums[0]?.genre">
+            One of the most popular artists of {{ arrArtistAlbums[0]?.genre }}.
+            You can listen to the album {{ arrArtistAlbums[0]?.title }}
+          </p>
+        </div>
+        <div>
           <mat-selection-list #shoes>
             <mat-list-option *ngFor="let album of arrArtistAlbums">
-              {{ album.title }}
+              <a mat-list-item (click)="handleClick(album)"
+                >{{ album?.title }}
+              </a>
             </mat-list-option>
           </mat-selection-list>
         </div>

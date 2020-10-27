@@ -16,6 +16,12 @@
     />
     <mat-card-content>
       <div>
+        <div>
+          <p>
+            {{ album?.title }} is album of {{ artist?.name }} was released in
+            {{ album?.year }} with many songs of genre {{ album?.genre }}.
+          </p>
+        </div>
         <h4 *ngIf="hasMoreAlbums; else otherContent">
           <span>{{ artist?.name }}</span> &nbsp; has other Albums, check the
           list below.

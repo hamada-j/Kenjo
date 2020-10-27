@@ -1,6 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { configID } from '../../globals';
 import { RestApiService } from 'src/app/api.service';
+
 import { Album } from 'src/app/model/album';
 import { Artist } from 'src/app/model/artist';
 
@@ -20,6 +23,10 @@ export class SearchComponent implements OnInit {
   resultSearch: null | Artist;
   constructor(private Api: RestApiService, private route: ActivatedRoute, private router: Router) {
     this.resultSearch = null;
+    this.arrArtistAlbums = [];
+  }
+  handleClick(album) {
+    this.router.navigate([`album/${album[configID]}`]);
   }
 
   handleSearch(value) {

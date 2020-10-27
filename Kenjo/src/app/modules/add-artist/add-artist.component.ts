@@ -94,7 +94,7 @@ export class AddArtistComponent implements OnInit {
         this.formulario.reset();
       }).catch(err => {
         console.log(responseError, redColor ,  err);
-        this.textErrorOne = err.error.error
+        this.textErrorOne = err.error.error;
       });
 
     } else {
@@ -104,7 +104,7 @@ export class AddArtistComponent implements OnInit {
         this.formulario.reset();
       }).catch(err => {
         console.log(responseError, redColor ,  err);
-        this.textErrorOne = err.error.error
+        this.textErrorOne = err.error.error;
       });
      }
     }
@@ -145,7 +145,7 @@ export class AddArtistComponent implements OnInit {
       this.router.navigate(["/artists"]);
     }).catch(err => {
       console.log(responseError, redColor ,  err);
-        this.textErrorMany = err.error.error
+        this.textErrorMany = err.error.error;
     });
 
   }
