@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { environment } from 'src/environments/environment';
 
 const SECRET_WORD = environment.secretWord;
+
+
 @Component({
   selector: "app-landingpage",
   templateUrl: "./landingpage.component.html",
