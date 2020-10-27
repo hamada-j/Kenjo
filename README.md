@@ -110,3 +110,31 @@ One task of the challenge is to post many elements (artists o albums) in one tim
 
 - First: Use Redux to handel many input.(I did not have time to work in it)
 - Second: Get All Element and manege them in the from and send to DB.
+
+### Done!
+
+- Run the App
+
+The app is working periodically you can run the app by Docker or NPM/ng.
+
+- Conclusion
+
+For time reasons, I work for another company, I have not been able to implement all the ideas that I had in mind, for example;
+
+- Use Redux to store perfectly validated forms for group submission to the database.
+- Work on a bigger and better Landing Page with a Parallax style and animations
+- A Firebase Oauth validation system.
+- A real-time chat
+- link the artists and their videos to the Youtube API, Spotify and Albums.
+- A proprietary player built in Angular entirely in Angular.
+
+These are some achievable ideas that would give the App greater value and a great development demonstration.
+
+- Test, for me it was essential to create some Test in Jasmin or Karma but it is a part that I need improve for the future in the FrontEnd, since I usually use Chai and Mocha in NodeJS.
+
+I have tried to develop each of the components by Debugging in ChromeDevTool to completely clean the console of errors and bad development practices.
+
+Thanks for sending me the Challenge. I hope to be part of your team and continue learning. Improving product development with great quality.
+
+Kind Regard
+Hamada

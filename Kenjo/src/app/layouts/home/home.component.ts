@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  sideBarHeader($event) {
+  sideBarHeader(e) {
     this.sideBarOpen = !this.sideBarOpen;
   }
 }

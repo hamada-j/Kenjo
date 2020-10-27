@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 ////////////// Internal Routing /////////////////////////
 import { AppRoutingModule } from "./app-routing.module";
 
-
 ////////////// APP //////////////////////////////////////
 import { AppComponent } from "./app.component";
 ////////////// CREW AREA /////////////////////////////////
@@ -22,8 +21,6 @@ import {
   NgRedux,
   DevToolsExtension
 } from "@angular-redux/store";
-
-
 
 @NgModule({
   declarations: [ AppComponent, LandingPageComponent],

@@ -2,14 +2,11 @@ import { Injectable, EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 
-// Models
 import { Album } from "./model/album";
 import { Artist } from "./model/artist";
-// Sustcribe
+
 import { environment } from "../environments/environment";
 import { Router } from "@angular/router";
-
-
 
 const BACKEND_URL = environment.apiUrl;
 @Injectable({
@@ -85,6 +82,5 @@ export class RestApiService {
   deleteArtist(artistId): Promise<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}artist/${artistId}`).toPromise();
   }
-
 
 }

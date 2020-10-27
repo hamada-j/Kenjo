@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
     this.sideBar = new EventEmitter();
     this.secretWord = 'fakeLogin';
   }
-
   ngOnInit(): void {}
 
   handleClick() {

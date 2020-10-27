@@ -51,7 +51,6 @@ export class AlbumComponent implements OnInit {
     // get the Albums of the Artist
     this.arrArtistAlbums = await this.arrAlbums.filter(album => album.artistId === this.album.artistId);
     // Check for more albums
-    // this.arrArtistAlbums.length <= 1 ? this.hasMoreAlbums : !this.hasMoreAlbums;
     if (this.arrArtistAlbums.length > 1) {
       this.hasMoreAlbums = true;
       this.arrArtistAlbums = this.arrArtistAlbums.filter(( obj ) => {
@@ -63,9 +62,6 @@ export class AlbumComponent implements OnInit {
     this.artist = arrAr[0];
   }
 
-  /*************************
-   * TODO
-   */
   // tslint:disable-next-line: use-lifecycle-interface
   async ngAfterViewInit() {
     this.id = this.route.snapshot.params['id'];
@@ -84,3 +80,9 @@ export class AlbumComponent implements OnInit {
   }
 
 }
+
+
+
+/*************************
+   * TODO
+   */

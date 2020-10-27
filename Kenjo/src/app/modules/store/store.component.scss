@@ -10,38 +10,39 @@
   // background-color: green;
   background-size: cover;
   display: block;
-  width: 50%;
-  height: 100%;
+  width: 70vh;
+  height: 70vh;
   margin: 5% 25%;
   position: absolute;
+  border-radius: 2px;
 }
 
-@media (min-width: 1000px) {
-  .coverImage {
-    height: 100%;
-    width: 80%;
-  }
-}
-@media (min-width: 840px) {
-  .coverImage {
-    width: 57%;
-  }
-}
-@media (min-width: 650px) {
-  .coverImage {
-    width: 48%;
-  }
-}
-@media (max-width: 550px) {
-  .coverImage {
-    width: 60%;
-    height: 80%;
-  }
-}
+// @media (min-width: 1000px) {
+//   .coverImage {
+//     height: 100%;
+//     width: 80%;
+//   }
+// }
+// @media (min-width: 840px) {
+//   .coverImage {
+//     width: 57%;
+//   }
+// }
+// @media (min-width: 650px) {
+//   .coverImage {
+//     width: 48%;
+//   }
+// }
+// @media (max-width: 550px) {
+//   .coverImage {
+//     width: 60%;
+//     height: 80%;
+//   }
+// }
 
-@media (max-width: 453px) {
-  .coverImage {
-    width: 60%;
-    height: 80%;
-  }
-}
+// @media (max-width: 453px) {
+//   .coverImage {
+//     width: 60%;
+//     height: 80%;
+//   }
+// }
