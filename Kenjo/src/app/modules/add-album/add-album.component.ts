@@ -53,7 +53,9 @@ export class AddAlbumComponent implements OnInit {
         this.dateValidator
       ]),
       genre: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(23)
       ])
     });
   }
@@ -67,7 +69,7 @@ export class AddAlbumComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
       const artistId = this.artists.find(element => {
          return element.name === this.albumForm.value.artistName;
       });
@@ -79,7 +81,7 @@ export class AddAlbumComponent implements OnInit {
         genre: this.albumForm.value.genre
       };
       if (!this.isAddMode && this.albumForm.valid && artistId[configID]) {
-        this.Api.putAlbum(this.id, resultForm).then(res => {
+        await this.Api.putAlbum(this.id, resultForm).then(res => {
         console.log(responseServer, greenColor, res);
         this.albumForm.reset();
       }).catch(err => console.log(responseError, redColor,  err));
@@ -87,7 +89,7 @@ export class AddAlbumComponent implements OnInit {
       } else {
 
         if (this.albumForm.valid && artistId[configID]) {
-          this.Api.postAlbum(resultForm).then(res => {
+          await this.Api.postAlbum(resultForm).then(res => {
           console.log(responseServer, greenColor, res);
           this.albumForm.reset();
         }).catch(err => console.log(responseError, redColor, err));
