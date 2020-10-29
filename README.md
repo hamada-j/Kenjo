@@ -1,5 +1,13 @@
 # Kenjo
 
+(edition) to run the App & Api:
+
+  run in Kenjo folder `$ ng serve -o` & run in Api `$ docker-compose up` 
+  
+  0r run in Kenjo folder `$  docker-compose build`  & `$ docker-compose up` 
+  
+
+
 Kenjo Challenge: dev challenge [Music Angular App] with Docker-Api.
 
 ## API Documentation
