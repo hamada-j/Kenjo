@@ -15,12 +15,12 @@ import { LandingPageComponent } from "./landing page/landingpage.component";
 
 /////////////// REDUX /////////////////////////////////////
 // import { StoreModule } from "@ngrx/store";
-import { IAppState, rootReducer, INITIAL_STATE } from "./redux/store";
-import {
-  NgReduxModule,
-  NgRedux,
-  DevToolsExtension
-} from "@angular-redux/store";
+// import { IAppState, rootReducer, INITIAL_STATE } from "./redux/store";
+// import {
+//   NgReduxModule,
+//   NgRedux,
+//   DevToolsExtension
+// } from "@angular-redux/store";
 
 @NgModule({
   declarations: [ AppComponent, LandingPageComponent],
@@ -32,14 +32,15 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgReduxModule
+    // NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngredux: NgRedux<IAppState>, devTools: DevToolsExtension) {
-    const enhancers = [devTools.enhancer()];
-    ngredux.configureStore(rootReducer, INITIAL_STATE, [], enhancers);
-  }
+  // constructor(
+  //   ngredux: NgRedux<IAppState>, devTools: DevToolsExtension) {
+  //   const enhancers = [devTools.enhancer()];
+  //   ngredux.configureStore(rootReducer, INITIAL_STATE, [], enhancers);
+  // }
 }
